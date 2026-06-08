@@ -1,10 +1,11 @@
 #create cash reg
 class CashRegister:
     def __init__(self, discount):
+        self._discount = None
         self.discount = discount
-        self.total = 0
-        self.items = []
-        self.previous_transactions = []
+        self._total = 0
+        self._items = []
+        self._previous_transactions = []
 
     @property
     def discount(self):
@@ -30,10 +31,9 @@ class CashRegister:
     
     #method
     def add_item(self, item, price, quantity):
-         self.total.append(price)
-         self.total += price
-
-         self.items.append(item)
+         self._total += price * quantity
+         for _ in range(quantity):
+             self._items.append(item)
 
          transaction = {
               "item" : item,
@@ -41,13 +41,18 @@ class CashRegister:
               "quantity" : quantity
          }
 
-         self.previous_transaction.append(transaction)
-    
+         self._previous_transactions.append(transaction)
 
-    
-
-    
+    def apply_discount(self):
+         if self.discount == 0:
+              return "There is no discount to apply."
+         discount_amount = self._total * (self.discount / 100)
+         self._total -= discount_amount
+         return f"After the discount, the total comes to ${int(self._total)}."
+                   
 discount = int(input("Enter discount percentage: "))
 cash_register = CashRegister(discount)
 
 print(cash_register.discount)
+print(cash_register.apply_discount())
+
