@@ -50,8 +50,7 @@ class CashRegister:
          self._total -= discount_amount
          return f"After the discount, the total comes to ${int(self._total)}."
                    
-discount = int(input("Enter discount percentage: "))
-cash_register = CashRegister(discount)
+cash_register = CashRegister(30)
 cash_register.add_item("Coffee", 100, 2)
 
 print(cash_register.discount)
