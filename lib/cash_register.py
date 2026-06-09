@@ -1,6 +1,6 @@
 #create cash reg
 class CashRegister:
-    def __init__(self, discount):
+    def __init__(self, discount=0):
         self._discount = None
         self.discount = discount
         self._total = 0
@@ -50,7 +50,7 @@ class CashRegister:
          self._total -= discount_amount
          return f"After the discount, the total comes to ${int(self._total)}."
                    
-cash_register = CashRegister(30)
+cash_register = CashRegister()
 cash_register.add_item("Coffee", 100, 2)
 
 print(cash_register.discount)
