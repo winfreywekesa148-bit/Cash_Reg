@@ -44,15 +44,18 @@ class CashRegister:
          self._previous_transactions.append(transaction)
 
     def apply_discount(self):
-         if self.discount == 0:
+         if self._discount == 0:
               return "There is no discount to apply."
-         discount_amount = self._total * (self.discount / 100)
+         discount_amount = self._total * (self._discount / 100)
          self._total -= discount_amount
          return f"After the discount, the total comes to ${int(self._total)}."
                    
 discount = int(input("Enter discount percentage: "))
 cash_register = CashRegister(discount)
+cash_register.add_item("Coffee", 100, 2)
 
 print(cash_register.discount)
+print(cash_register.add_item("Coffee", 100, 2))
 print(cash_register.apply_discount())
+
 
