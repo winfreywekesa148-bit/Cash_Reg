@@ -45,10 +45,10 @@ class CashRegister:
 
     def apply_discount(self):
          if self._discount == 0:
-              return "There is no discount to apply."
+              print ( "There is no discount to apply.")
          discount_amount = self.total * (self._discount / 100)
          self.total -= discount_amount
-         return f"After the discount, the total comes to ${int(self.total)}."
+         print ( f"After the discount, the total comes to ${int(self.total)}.")
                    
 cash_register = CashRegister()
 cash_register.add_item("Coffee", 100, 2)
